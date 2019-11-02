@@ -9,5 +9,6 @@ package com.practise.java.practise;
  }
  public static void main(String[] args) {
  System.out.println(TestDeclare.MR.format("Doe", "John"));
+ System.out.println(TestDeclare.MR.format("ajay", "John"));
  }
  }
