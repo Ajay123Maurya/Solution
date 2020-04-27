@@ -1,7 +1,5 @@
 package com.practise.ds.linkedlist;
 
-import com.practise.ds.linkedlist.LinkedlistOperation.Node;
-
 public class CircularlyLinkedList {
 
   //  Node head; // head of list 
@@ -20,24 +18,24 @@ public class CircularlyLinkedList {
    } 
  
    // Method to insert a new node 
-   public  Node push(Node new_head, int data) 
+   public  Node push(Node node, int data) 
    { 
        // Create a new node with given data 
        Node new_node = new Node(data);
        
-       if(new_head == null) {
-    	   new_head = new_node;
-    	   new_head.next = new_head;
+       if(node == null) {
+    	   node = new_node;
+    	   node.next = node;
        }else {
-       Node temp = new_head;
-       new_node.next = new_head;
-       while(temp.next != new_head) {
+       Node temp = node;
+       new_node.next = node;
+       while(temp.next != node) {
     	   temp = temp.next;
        }
        temp.next = new_node;
-       new_head = new_node;
+       node = new_node;
        }
-       return new_head;
+       return node;
        } 
    public void insert(Node head,int data) 
    { 

@@ -1,8 +1,10 @@
-package com.practise.ds.linkedlist; 
-  
+package com.practise.ds.linkedlist;
+
+import com.practise.ds.tree.BinarySearchTree;
+
 // Java program to implement 
 // a Singly Linked List 
-public class LinkedlistOperation { 
+public class LinkList { 
   
     Node head; // head of list 
     
@@ -84,9 +86,9 @@ public class LinkedlistOperation {
             last.next = new_node;
     }
     // Method to print the LinkedList. 
-    public static void printList(LinkedlistOperation list) 
+    public void printList() 
     { 
-        Node currNode = list.head; 
+        Node currNode = this.head; 
    
         System.out.print("LinkedList: "); 
    
@@ -100,12 +102,97 @@ public class LinkedlistOperation {
         } 
         System.out.print("\n");
     } 
+    
+    
+    
+	public void  reverse() {
+		
+		Node prev = null,current = null,next;
+		
+		current = this.head;
+		
+		while(current != null) {
+			
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		this.head = prev;
+	}
    
+	public int  length() {
+		
+		int count = 0;
+		
+		Node current = this.head;
+		
+		while(current != null) {
+			
+			count++;
+			current = current.next;
+		}
+		return count;
+	}
+   
+	public int getElementFromStart(int index) {
+		int data = 0,count = 0;
+        Node current = this.head;
+		
+		while(current != null) {
+			
+			if(++count == index) {
+				data = current.data;
+				break;
+			}
+			current = current.next;
+		}
+		
+		return data;
+	}
+	public int getElementFromEnd(int index) {
+		int data = 0,count = 0;
+        Node current = this.head;
+        int len = this.length();
+		index = len - index + 1;
+		while(current != null) {
+			
+			if(++count == index) {
+				data = current.data;
+				break;
+			}
+			current = current.next;
+		}
+		
+		return data;
+	}
+	public int search(int data) {
+		int index = 0;
+        Node current = this.head;
+		while(current != null) {
+			
+			if(current.data == data) {
+				index++;
+				break;
+			}
+			index++;
+			current = current.next;
+		}
+		return index;
+	}
+	
+	public void  convertBinaryTreeToDoublyLinkList(BinarySearchTree bst) {
+		
+		while(true) {
+			
+			
+		}
+	}
     // Driver code 
     public static void main(String[] args) 
     { 
         /* Start with the empty list. */
-    	LinkedlistOperation list = new LinkedlistOperation(); 
+    	LinkList list = new LinkList(); 
   
         // 
         // ******INSERTION****** 
@@ -113,19 +200,36 @@ public class LinkedlistOperation {
   
         // Insert the values 
           list.add(1); 
-          list.add(2); 
+          list.add(21); 
           list.add(3); 
-          list.add(4); 
+          list.add(11); 
           list.add(5); 
-          list.add(6); 
+          list.add(25); 
           list.add(7); 
-          printList(list); 
-          list.insertAfter(4,11);
-          printList(list); 
-          list.delete(11);
-        // Print the LinkedList 
-        printList(list);
-        list.append(8);
-        printList(list);
+          list.printList();
+          
+          System.out.println("Index of "+11+" in  list : -  "+list.search(11));
+          
+         // System.out.println("Element at index "+4+" in  list : -  "+list.getElementFromStart(4));
+         // System.out.println("Element at index "+2+" in  list : -  "+list.getElementFromStart(2));
+          
+         // System.out.println("Element at index from end "+3+" in  list : -  "+list.getElementFromEnd(3));
+         // System.out.println("Element at index from end "+6+" in  list : -  "+list.getElementFromEnd(6));
+           
+         // System.out.println("Length of list : -  "+list.length());
+         // list.insertAfter(4,11);
+          //list.printList();
+          
+         // System.out.println("Length of list : -  "+list.length());
+          
+         // list.delete(11);
+        //  printList(list);
+          
+          
+       // list.append(8);
+       // printList(list);
+          
+       //   list.reverse();
+       //   list.printList();
     } 
 }

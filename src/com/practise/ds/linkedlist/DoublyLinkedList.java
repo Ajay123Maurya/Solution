@@ -1,7 +1,5 @@
 package com.practise.ds.linkedlist;
 
-import com.practise.ds.linkedlist.LinkedlistOperation.Node;
-
 public class DoublyLinkedList {
 
     Node head; // head of list 

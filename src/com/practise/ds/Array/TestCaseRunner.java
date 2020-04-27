@@ -5,8 +5,8 @@ public class TestCaseRunner {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int a[]  = {3,5,6,8,9,12,1,2};
-		BinarySearch bs  = new BinarySearch();
+		//int a[]  = {3,5,6,8,9,12,1,2};
+		//BinarySearch bs  = new BinarySearch();
 		/*int index = bs.searchInCirculerSortedArray(a, 8);
 		System.out.println( "Index :::::::::::::::::::::    " + index);
 	    index = bs.searchInCirculerSortedArray(a, 1);
@@ -28,8 +28,9 @@ public class TestCaseRunner {
 		
 	//	bs.checkSumOfPairExistInCircularlySortedArray(a, 15);
 		
-		ArrayPractise ap = new ArrayPractise();
-		ap.MaxSumOfindexAndValueOfArray(a);
+	//	ArrayPractise ap = new ArrayPractise();
+	//	ap.MaxSumOfindexAndValueOfArray(a);
+		
 	}
 
 }
