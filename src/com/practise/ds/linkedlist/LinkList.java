@@ -1,5 +1,4 @@
 package com.practise.ds.linkedlist;
-
 import com.practise.ds.tree.BinarySearchTree;
 
 // Java program to implement 
@@ -20,32 +19,69 @@ public class LinkList {
             next = null; 
         } 
     } 
-  
-    // Method to insert a new node 
+     
+     /**
+     * @param data
+     * 
+     * Method to add first element in LinkList
+     * 
+     */
+    public  void push(int data) 
+     { 
+         Node new_node = new Node(data); 
+         
+         if (this.head == null) { 
+             this.head = new_node; 
+         } 
+         else { 
+             new_node.next = head;
+        	 head = new_node;
+         } 
+     } 
+    
+    /**
+     * @param data
+     * 
+     * Method to remove head element from list
+     */
+    public  void pop() 
+    { 
+        
+        if (this.head == null) { 
+           System.out.println("List is empty");
+        } 
+        else { 
+           head = head.next;
+        } 
+    } 
+   
+      
+    /**
+     * @param data
+     * Method to add new node at last of list
+     */
     public  void add(int data) 
     { 
-        // Create a new node with given data 
         Node new_node = new Node(data); 
         new_node.next = null; 
-  
-        // If the Linked List is empty, 
-        // then make the new node as head 
         if (this.head == null) { 
             this.head = new_node; 
         } 
         else { 
-            // Else traverse till the last node 
-            // and insert the new_node there 
             Node last = this.head; 
             while (last.next != null) { 
                 last = last.next; 
             } 
-  
-            // Insert the new_node at last node 
             last.next = new_node; 
         } 
     } 
-    // Method to insert a new node 
+  
+    /**
+     * @param prev
+     * @param data
+     * 
+     * Method to print data after a prev value
+     */
     public  void insertAfter(int prev ,int data) 
     { 
 
@@ -60,7 +96,12 @@ public class LinkList {
             last.next = new_node;
     } 
   
-    // Method to insert a new node 
+    
+    /**
+     * @param data
+     * 
+     * Method to delete the node havind value same as data
+     */
     public  void delete(int data) 
     { 
 
@@ -73,31 +114,17 @@ public class LinkList {
             last.next = last.next.next;
     }
     
-    
-    // Method to insert a new node 
-    public  void append(int data) 
-    { 
-
-            Node last = this.head; 
-            while (last.next != null) {
-            	last = last.next;
-            }
-            Node new_node = new Node(data); 
-            last.next = new_node;
-    }
-    // Method to print the LinkedList. 
+    /**
+     * Method to print elements of list
+     */
     public void printList() 
     { 
         Node currNode = this.head; 
    
         System.out.print("LinkedList: "); 
    
-        // Traverse through the LinkedList 
         while (currNode != null) { 
-            // Print the data at current node 
             System.out.print(currNode.data + " "); 
-   
-            // Go to next node 
             currNode = currNode.next; 
         } 
         System.out.print("\n");
@@ -119,8 +146,7 @@ public class LinkList {
 			current = next;
 		}
 		this.head = prev;
-	}
-   
+	}   
 	public int  length() {
 		
 		int count = 0;
@@ -208,7 +234,10 @@ public class LinkList {
           list.add(7); 
           list.printList();
           
-          System.out.println("Index of "+11+" in  list : -  "+list.search(11));
+          list.push(15);
+          list.printList();
+          
+         // System.out.println("Index of "+11+" in  list : -  "+list.search(11));
           
          // System.out.println("Element at index "+4+" in  list : -  "+list.getElementFromStart(4));
          // System.out.println("Element at index "+2+" in  list : -  "+list.getElementFromStart(2));
