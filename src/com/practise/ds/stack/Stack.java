@@ -71,7 +71,7 @@ public class Stack {
 		top--;
 		return data;
 	}
-	public Object top() {
+	public Object peek() {
 		return al.get(top);
 	}
 	public int search(int data) {
@@ -207,7 +207,7 @@ public void infixToPostFix(String input) {
 			if(isOpeningBraces(ch[i])) {
 				sk.push(ch[i]);
 			}else {
-				while(!sk.isEmpty() && !arePair((char)sk.top(), ch[i])) {
+				while(!sk.isEmpty() && !arePair((char)sk.peek(), ch[i])) {
 					res = res+(char)sk.pop();
 				}
 				sk.pop();
@@ -215,13 +215,13 @@ public void infixToPostFix(String input) {
 		}else if(isOprator(ch[i])) {
 			if(sk.isEmpty()) {
 				sk.push(ch[i]);
-			}else if(isOpeningBraces((char)sk.top())) {
+			}else if(isOpeningBraces((char)sk.peek())) {
 				sk.push(ch[i]);
 			}
-			else if(isHigherPrecedence(ch[i],(char)sk.top())) {
+			else if(isHigherPrecedence(ch[i],(char)sk.peek())) {
 				sk.push(ch[i]);
 			 }else{
-				while(!sk.isEmpty() && (!isHigherPrecedence(ch[i],(char)sk.top())||!isOpeningBraces((char)sk.top()))) {
+				while(!sk.isEmpty() && (!isHigherPrecedence(ch[i],(char)sk.peek())||!isOpeningBraces((char)sk.peek()))) {
 					res = res+(char)sk.pop();
 				}
 				sk.push(ch[i]);
@@ -285,11 +285,40 @@ private boolean isHigherPrecedence(char input1,char input2) {
 		}
 		return flag;
 	}
-	private boolean isClosingBraces(char ch) {
+/*	private boolean isClosingBraces(char ch) {
 		boolean flag = false;
 		if(ch == '}'||ch == ')'||ch == ']') {
 			flag = true;
 		}
 		return flag;
+	}                      */           
+	
+	public void nextGreaterElement(int arr[]) {
+		Stack sk = new Stack(); 
+		int n = arr.length;
+		sk.push(arr[0]);
+		for(int i=1;i<n;i++) {
+			
+			int current = arr[i];
+			int element = (int) sk.pop();
+			
+				while(element < current) {
+					System.out.println(current + "  is element next greater to  " + element);
+					if(sk.isEmpty()) {
+						break;
+					}
+					element = (int) sk.pop();
+				}
+				
+				if(element > current) {
+					sk.push(element);
+				}
+				sk.push(arr[i]);
+		}
+		while(!sk.isEmpty()) {
+			
+			System.out.println(-1 + "  is element next greater to  "+ sk.pop());
+		}
+		
 	}
 }
